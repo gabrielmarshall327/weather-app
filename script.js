@@ -1,14 +1,13 @@
-require('dotenv').config();
-
+import weatherApiKey from "./apiKeys.js";
 
 let weather = {
-    apiKey : process.env.apiKey, //api key
+    //apiKey : process.env.apiKey, //api key
     fetchWeather: function (city) { //fetches the weather from api
         fetch(
             "https://api.openweathermap.org/data/2.5/weather?q=" //the api url with inputs of name and api key
             + city 
             + "&units=imperial&appid=" 
-            + this.apiKey
+            + weatherApiKey
         )
         .then((response) => response.json()) //pulls data from json?
         .then((data) => this.displayWeather(data)); //data is displayed by function
